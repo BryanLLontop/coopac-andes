@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /api-coopac-andes
+    encoding:
+      force-response: true
+      charset: UTF-8
+  port: 8081
+
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  webclient:
+    base-url: https://apihub-dev.singularlabs.co
+    oauth:
+      auth-path: /etapa0/oauth
+      username: andesA
+      password: C@j@@nd3$
+    api-key:
+      header: x-api-key
+      value: 36IZghAT9e4TtIbjPh6cy4T49cGaigwL6CVWudmm
+    services-path: /etapa0/servicios
+    pagos-simulacion-path: /etapa0/pagos/simulacion
+    pagos-servicios-path: /etapa0/pagos/servicios
+    pagos-extornar-path: /etapa0/pagos/extornar
