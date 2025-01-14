@@ -12,7 +12,7 @@ import java.util.List;
 public class ReciboDataDTO {
     private String id;
     private String number;
-    private List<AmountResponseDTO> amounts;
+    private List<AmountDTO> amounts;
     private String maturityDate;
     private String billHolder;
     private String serviceCode;

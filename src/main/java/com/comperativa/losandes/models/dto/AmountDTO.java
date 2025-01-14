@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AmountRequestDTO {
+public class AmountDTO {
+    private AmountTypeDTO amountType;
     private AmountValueDTO amountValue;
 }

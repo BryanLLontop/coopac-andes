@@ -9,10 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BillResponseSimulacionDTO {
+public class BillDTO {
     private String id;
     private String number;
     private List<AmountResponseDTO> amounts;
     private String maturityDate;
-    private String prueba;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class DataDTO {
     private String id;
     private ServiceDataResponseDTO service;
-    private List<BillResponseSimulacionDTO> bills;
+    private List<BillDTO> bills;
     private List<AdditionalFieldRequestDTO> additionalFields;
     private ChargeAmountDTO chargeAmount;
     private FeesDTO fees;

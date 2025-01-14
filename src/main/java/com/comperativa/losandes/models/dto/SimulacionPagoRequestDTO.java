@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class SimulacionPagoRequestDTO {
     private ServiceRequestDTO service;
-    private List<BillRequestDTO> bills;
+    private List<BillDTO> bills;
     private List<AdditionalFieldDTO> additionalFields;
     private String serviceProvider;
     private String ers;
