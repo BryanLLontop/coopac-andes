@@ -3,7 +3,6 @@ package com.comperativa.losandes.controllers;
 import com.comperativa.losandes.models.dto.*;
 import com.comperativa.losandes.services.AgenteCashService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,23 +18,13 @@ public class AgenteCashController {
     }
 
     @GetMapping(value = "/servicios", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ServiceResponseDTO> obtenerServicios(@RequestParam String nombre){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.obtenerServicios(nombre));
-        } catch (Exception e){
-            log.error("Error en método obtenerServicios {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public ResponseEntity<ServiceResponseDTO> obtenerServicios(@RequestParam String nombre) {
+        return ResponseEntity.ok().body(agenteCashService.obtenerServicios(nombre));
     }
 
     @GetMapping(value = "/servicios/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DetalleServiceResponseDTO> obtenerDetalleServicios(@PathVariable String id){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.obtenerDetalleServicios(id));
-        } catch (Exception e){
-            log.error("Error en método obtenerServicios {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public ResponseEntity<DetalleServiceResponseDTO> obtenerDetalleServicios(@PathVariable String id) {
+        return ResponseEntity.ok().body(agenteCashService.obtenerDetalleServicios(id));
     }
 
     @PostMapping(value = "/servicios/{id}/detalle", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,48 +33,28 @@ public class AgenteCashController {
             @RequestParam String valor,
             @RequestParam(required = false) String ers,
             @RequestBody AgencyDTO agencyDTO
-            ){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.obtenerDetalleRecibo(agencyDTO, id, valor, ers));
-        } catch (Exception e){
-            log.error("Error en método obtenerDetalleRecibo {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    ) {
+        return ResponseEntity.ok().body(agenteCashService.obtenerDetalleRecibo(agencyDTO, id, valor, ers));
     }
 
     @PostMapping(value = "/pagos/simulacion", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SimulacionPagoResponseDTO> simularPago(
             @RequestBody SimulacionPagoRequestDTO simulacionPagoRequestDTO
-    ){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.simularPago(simulacionPagoRequestDTO));
-        } catch (Exception e){
-            log.error("Error en método simularPago {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    ) {
+        return ResponseEntity.ok().body(agenteCashService.simularPago(simulacionPagoRequestDTO));
     }
 
     @PostMapping(value = "/pagar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PagoServicioRequestDTO> pagarServicio(
             @RequestBody SimulacionPagoRequestDTO simulacionPagoRequestDTO
-    ){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.pagoServicio(simulacionPagoRequestDTO));
-        } catch (Exception e){
-            log.error("Error en método pagarServicio {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    ) {
+        return ResponseEntity.ok().body(agenteCashService.pagoServicio(simulacionPagoRequestDTO));
     }
 
     @PostMapping(value = "/extornar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ExtornarResponseDTO> extornar(
             @RequestBody ExtornarRequestDTO extornarRequestDTO
-    ){
-        try{
-            return ResponseEntity.ok().body(agenteCashService.extonar(extornarRequestDTO));
-        } catch (Exception e){
-            log.error("Error en método extornar {}", e.toString());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    ) {
+        return ResponseEntity.ok().body(agenteCashService.extonar(extornarRequestDTO));
     }
 }
