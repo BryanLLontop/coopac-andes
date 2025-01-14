@@ -21,6 +21,7 @@ spring:
     api-key:
       header: x-api-key
       value: 36IZghAT9e4TtIbjPh6cy4T49cGaigwL6CVWudmm
+    services-categorias-path: /etapa0/servicios/categoria
     services-path: /etapa0/servicios
     pagos-simulacion-path: /etapa0/pagos/simulacion
     pagos-servicios-path: /etapa0/pagos/servicios

@@ -18,6 +18,8 @@ public class AgenteCashService {
     private String pass;
     @Value("${spring.webclient.api-key.value}")
     private String valueApiKey;
+    @Value("${spring.webclient.services-categorias-path}")
+    private String servicesCategoryPath;
     @Value("${spring.webclient.services-path}")
     private String servicesPath;
     @Value("${spring.webclient.pagos-simulacion-path}")
@@ -63,6 +65,17 @@ public class AgenteCashService {
         if (token == null || tokenExpiration == null || Instant.now().isAfter(tokenExpiration)) {
             refreshAuthToken();
         }
+    }
+
+    private CategoriaResponseDTO obtenerCategoriasAgente() {
+        ensureValidToken(); // Asegurarse de que el token sea válido
+        return webClient.get()
+                .uri(servicesCategoryPath)
+                .header(AUTHORIZATION, BEARER + token)
+                .header(X_API_KEY, valueApiKey)
+                .retrieve()
+                .bodyToMono(CategoriaResponseDTO.class)
+                .block();
     }
 
     private ServiceResponseDTO obtenerServiciosAgente(String nombre) {
@@ -142,6 +155,10 @@ public class AgenteCashService {
                 .retrieve()
                 .bodyToMono(ExtornarResponseDTO.class)
                 .block();
+    }
+
+    public CategoriaResponseDTO obtenerCategorias() {
+        return this.obtenerCategoriasAgente();
     }
 
     public ServiceResponseDTO obtenerServicios(String nombre) {

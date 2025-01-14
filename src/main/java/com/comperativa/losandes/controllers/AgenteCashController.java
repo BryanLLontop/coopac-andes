@@ -17,6 +17,11 @@ public class AgenteCashController {
         this.agenteCashService = agenteCashService;
     }
 
+    @GetMapping(value = "/categorias", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CategoriaResponseDTO> obtenerCategorias() {
+        return ResponseEntity.ok().body(agenteCashService.obtenerCategorias());
+    }
+
     @GetMapping(value = "/servicios", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ServiceResponseDTO> obtenerServicios(@RequestParam String nombre) {
         return ResponseEntity.ok().body(agenteCashService.obtenerServicios(nombre));
