@@ -14,7 +14,7 @@ import java.util.List;
 public class ServiceResponseDTO {
     private int statusCode;
     private String message;
-    private List<ServiceDataDTO> data;
+    private List<ServiceDataResponseDTO> data;
     private String messages;
     private String code;
 }

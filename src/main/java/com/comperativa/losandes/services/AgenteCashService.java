@@ -157,7 +157,6 @@ public class AgenteCashService {
     }
 
     public SimulacionPagoResponseDTO simularPago(SimulacionPagoRequestDTO simulacionPagoRequestDTO) {
-        System.out.println(this.simularPagoAgente(simulacionPagoRequestDTO));
         return this.simularPagoAgente(simulacionPagoRequestDTO);
     }
 
